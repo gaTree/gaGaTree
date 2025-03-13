@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gaGaTree 🎄</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+        .tree {
+            display: inline-block;
+            white-space: pre;
+            font-family: monospace;
+            font-size: 24px;
+            line-height: 1.2;
+        }
+        .star {
+            color: yellow;
+            font-size: 30px;
+            animation: blink 1s infinite;
+        }
+        .lights {
+            animation: blink 0.5s infinite alternate;
+        }
+        @keyframes blink {
+            50% { color: gold; }
+        }
+        .snowflake {
+            position: absolute;
+            color: white;
+            font-size: 14px;
+            user-select: none;
+            animation: snowfall linear infinite;
+        }
+        @keyframes snowfall {
+            from { transform: translateY(-10px); opacity: 1; }
+            to { transform: translateY(100vh); opacity: 0; }
+        }
+        .image-container {
+            margin-top: 20px;
+        }
+        .image-container img {
+            max-width: 200px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.7);
+        }
+    </style>
+</head>
+<body>
+    <h1>🎄 gaGaTree 🎄</h1>
+    
+    <div class="image-container">
+        <img src="gaGaTree.jpg" alt="鸡噶" />
+    </div>
+
+    <pre class="tree" id="gaTree"></pre>
+
+    <script>
+        function generateTree() {
+            const treeLines = [
+                "         ✨         ",
+                "        噶噶噶        ",
+                "       噶噶🎁噶噶       ",
+                "      噶🎄噶🎀噶🎄噶      ",
+                "     🎅噶🎁噶噶🎁噶🎅     ",
+                "    💖噶噶🎄噶噶🎄噶噶💖    ",
+                "   🎀噶噶噶🎁噶噶🎁噶噶噶🎀   ",
+                "  🎄噶噶噶噶🎄噶噶🎄噶噶噶噶🎄  ",
+                " 🎁噶🎀噶噶噶🎅噶噶噶🎅噶噶噶🎀噶🎁 ",
+                "        🎄噶噶噶🎄        ",
+                "        🎀噶噶噶🎀        ",
+                "        🎁噶噶噶🎁        "
+            ];
+            document.getElementById("gaTree").innerHTML = treeLines.join("\n");
+        }
+        generateTree();
+
+        // 生成雪花
+        function createSnowflakes() {
+            for (let i = 0; i < 50; i++) {
+                let snowflake = document.createElement("div");
+                snowflake.className = "snowflake";
+                snowflake.innerHTML = "❄";
+                snowflake.style.left = Math.random() * window.innerWidth + "px";
+                snowflake.style.animationDuration = (Math.random() * 3 + 2) + "s";
+                snowflake.style.animationDelay = Math.random() * 5 + "s";
+                document.body.appendChild(snowflake);
+            }
+        }
+        createSnowflakes();
+    </script>
+</body>
+</html>
